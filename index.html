@@ -22,31 +22,6 @@
   <!-- Ambient Golden Bokeh Canvas Background -->
   <canvas id="bokehCanvas"></canvas>
 
-  <!-- CAMERA OPENING ANIMATION OVERLAY -->
-  <div id="shutterIntro" class="shutter-overlay">
-    <div class="iris-container">
-      <div class="iris-blade blade-1"></div>
-      <div class="iris-blade blade-2"></div>
-      <div class="iris-blade blade-3"></div>
-      <div class="iris-blade blade-4"></div>
-      <div class="iris-blade blade-5"></div>
-      <div class="iris-blade blade-6"></div>
-      <div class="iris-blade blade-7"></div>
-      <div class="iris-blade blade-8"></div>
-    </div>
-    <div class="shutter-center">
-      <div class="focus-reticle">
-        <span class="reticle-corner tl"></span>
-        <span class="reticle-corner tr"></span>
-        <span class="reticle-corner bl"></span>
-        <span class="reticle-corner br"></span>
-        <div class="reticle-cross"></div>
-      </div>
-      <p class="focus-text"><i class="fa-solid fa-camera"></i> BLINK FRAME APERTURE OPENING...</p>
-    </div>
-    <!-- Flash Strobe -->
-    <div class="camera-flash" id="cameraFlash"></div>
-  </div>
 
   <!-- VIEWFINDER CORNERS (DSLR Camera HUD Frame) -->
   <div class="viewfinder-frame pointer-events-none">
@@ -65,7 +40,7 @@
         <div class="logo-wrapper" id="logoWrapper" title="Click to trigger camera snap">
           <div class="logo-spotlight"></div>
           <div class="logo-ring"></div>
-          <img src="logo.png" alt="Blink Frame Photography Logo" class="brand-logo" id="brandLogo">
+          <img src="logo.png" alt="Blink Frame Photography Logo" class="brand-logo" id="brandLogo" loading="eager" fetchpriority="high">
           <div class="focus-brackets">
             <span class="fb-tl"></span>
             <span class="fb-tr"></span>

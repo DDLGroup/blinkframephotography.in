@@ -104,11 +104,8 @@
     }
   }
 
-  // --- TRIGGER FLASH AND SHUTTER SNAP ---
+  // --- TRIGGER FLASH AND SHUTTER SNAP ON LOGO CLICK ---
   const interactiveFlash = document.getElementById('interactiveFlash');
-  const snapTriggerBtn = document.getElementById('snapTriggerBtn');
-  const soundToggleBtn = document.getElementById('soundToggleBtn');
-  const soundIcon = document.getElementById('soundIcon');
   const logoWrapper = document.getElementById('logoWrapper');
 
   function triggerCameraSnap() {
@@ -131,62 +128,14 @@
     }
   }
 
-  if (snapTriggerBtn) {
-    snapTriggerBtn.addEventListener('click', triggerCameraSnap);
-  }
-
   if (logoWrapper) {
     logoWrapper.addEventListener('click', triggerCameraSnap);
   }
 
-  // Sound toggle button handler
-  if (soundToggleBtn && soundIcon) {
-    soundToggleBtn.addEventListener('click', () => {
-      initAudio();
-      soundEnabled = !soundEnabled;
-      if (soundEnabled) {
-        soundIcon.className = 'fa-solid fa-volume-high';
-        soundToggleBtn.title = 'Sound: ON (Click to Mute)';
-        triggerCameraSnap();
-      } else {
-        soundIcon.className = 'fa-solid fa-volume-xmark';
-        soundToggleBtn.title = 'Sound: MUTED (Click to Enable)';
-      }
-    });
-  }
 
-  // --- OPENING CAMERA SHUTTER SEQUENCE ---
-  const shutterOverlay = document.getElementById('shutterIntro');
-  const cameraFlash = document.getElementById('cameraFlash');
-
-  function runOpeningSequence() {
-    // Attempt audio unlock on first user gesture or default
-    const unlockAudio = () => {
-      initAudio();
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchstart', unlockAudio);
-    };
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchstart', unlockAudio);
-
-    setTimeout(() => {
-      playShutterSound();
-
-      if (cameraFlash) {
-        cameraFlash.classList.add('flash-active');
-      }
-
-      if (shutterOverlay) {
-        shutterOverlay.classList.add('opening');
-        setTimeout(() => {
-          shutterOverlay.classList.add('completed');
-        }, 1100);
-      }
-    }, 600);
-  }
 
   // --- 7-DAY AUTOMATIC PERSISTENT COUNTDOWN ---
-  const STORAGE_KEY = 'blinkframe_countdown_deadline_v1';
+  const STORAGE_KEY = 'blinkframe_countdown_deadline_v2';
   const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
   function getTargetDeadline() {
@@ -233,9 +182,9 @@
     animateDigit(minutesEl, mStr, 'minutes');
     animateDigit(secondsEl, sStr, 'seconds');
 
-    // Calculate dynamic preparation percentage (starts at 85% and progresses towards 99%)
+    // Dynamic readiness percentage (progresses from 87% towards 99%)
     const elapsedRatio = 1 - (remaining / SEVEN_DAYS_MS);
-    const calcPercent = Math.min(99, Math.max(85, Math.floor(85 + elapsedRatio * 14)));
+    const calcPercent = Math.min(99, Math.max(87, Math.floor(87 + elapsedRatio * 12)));
     if (progressBar && progressPercent) {
       progressBar.style.width = calcPercent + '%';
       progressPercent.textContent = calcPercent + '%';
@@ -257,61 +206,6 @@
   // Update countdown immediately then tick every 1 second
   updateCountdown();
   setInterval(updateCountdown, 1000);
-
-  // --- LIVE CAMERA TIMECODE HUD (00:00:07:xx) ---
-  const liveTimecodeEl = document.getElementById('liveTimecode');
-  let frameCount = 0;
-  let secondsRunning = 7;
-  let minutesRunning = 0;
-  let hoursRunning = 0;
-
-  function updateTimecode() {
-    frameCount++;
-    if (frameCount >= 60) {
-      frameCount = 0;
-      secondsRunning++;
-      if (secondsRunning >= 60) {
-        secondsRunning = 0;
-        minutesRunning++;
-        if (minutesRunning >= 60) {
-          minutesRunning = 0;
-          hoursRunning++;
-        }
-      }
-    }
-
-    if (liveTimecodeEl) {
-      const hh = String(hoursRunning).padStart(2, '0');
-      const mm = String(minutesRunning).padStart(2, '0');
-      const ss = String(secondsRunning).padStart(2, '0');
-      const ff = String(frameCount).padStart(2, '0');
-      liveTimecodeEl.textContent = `${hh}:${mm}:${ss}:${ff}`;
-    }
-    requestAnimationFrame(updateTimecode);
-  }
-  requestAnimationFrame(updateTimecode);
-
-  // --- CURRENT YEAR COPYRIGHT ---
-  const currentYearEl = document.getElementById('currentYear');
-  if (currentYearEl) {
-    currentYearEl.textContent = new Date().getFullYear();
-  }
-
-  // --- QUICK INQUIRY FORM DIRECT TO WHATSAPP ---
-  const inquiryForm = document.getElementById('inquiryForm');
-  if (inquiryForm) {
-    inquiryForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('inqName').value.trim();
-      const phone = document.getElementById('inqPhone').value.trim();
-      const eventDetails = document.getElementById('inqEvent').value.trim();
-
-      const messageText = `Hi Blink Frame Photography,\nI would like to inquire about wedding/film bookings.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Event & City:* ${eventDetails}\n\nPlease share your packages and availability.`;
-      
-      const whatsappUrl = `https://wa.me/917001870391?text=${encodeURIComponent(messageText)}`;
-      window.open(whatsappUrl, '_blank');
-    });
-  }
 
   // --- 3D TILT EFFECT ON LOGO ---
   if (logoWrapper) {
@@ -345,7 +239,7 @@
 
     function createParticles() {
       particles = [];
-      const count = Math.floor((width * height) / 18000); // Responsive particle density
+      const count = Math.floor((width * height) / 18000);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
@@ -372,7 +266,6 @@
 
         const currentOpacity = p.opacity + Math.sin(p.pulseVal) * 0.15;
 
-        // Wrap around borders smoothly
         if (p.y < -10) p.y = height + 10;
         if (p.x < -10) p.x = width + 10;
         if (p.x > width + 10) p.x = -10;
@@ -393,13 +286,6 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     requestAnimationFrame(renderParticles);
-  }
-
-  // --- INITIALIZE OPENING ON DOM READY ---
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runOpeningSequence);
-  } else {
-    runOpeningSequence();
   }
 
 })();
