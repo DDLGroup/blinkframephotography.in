@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blink Frame Photography | Wedding Photography & Films — Coming Soon</title>
+  <meta name="description" content="Blink Frame Photography — Wedding Photography & Films. For Bookings WhatsApp: 70018 70391.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Montserrat:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for WhatsApp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+
+  <!-- Ambient Golden Bokeh Canvas Background -->
+  <canvas id="bokehCanvas"></canvas>
+
+  <!-- CAMERA OPENING ANIMATION OVERLAY -->
+  <div id="shutterIntro" class="shutter-overlay">
+    <div class="iris-container">
+      <div class="iris-blade blade-1"></div>
+      <div class="iris-blade blade-2"></div>
+      <div class="iris-blade blade-3"></div>
+      <div class="iris-blade blade-4"></div>
+      <div class="iris-blade blade-5"></div>
+      <div class="iris-blade blade-6"></div>
+      <div class="iris-blade blade-7"></div>
+      <div class="iris-blade blade-8"></div>
+    </div>
+    <div class="shutter-center">
+      <div class="focus-reticle">
+        <span class="reticle-corner tl"></span>
+        <span class="reticle-corner tr"></span>
+        <span class="reticle-corner bl"></span>
+        <span class="reticle-corner br"></span>
+        <div class="reticle-cross"></div>
+      </div>
+      <p class="focus-text"><i class="fa-solid fa-camera"></i> BLINK FRAME APERTURE OPENING...</p>
+    </div>
+    <!-- Flash Strobe -->
+    <div class="camera-flash" id="cameraFlash"></div>
+  </div>
+
+  <!-- VIEWFINDER CORNERS (DSLR Camera HUD Frame) -->
+  <div class="viewfinder-frame pointer-events-none">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="main-wrapper">
+    <div class="container">
+      
+      <!-- HERO / LOGO SECTION -->
+      <section class="hero-section">
+        <div class="logo-wrapper" id="logoWrapper" title="Click to trigger camera snap">
+          <div class="logo-spotlight"></div>
+          <div class="logo-ring"></div>
+          <img src="logo.png" alt="Blink Frame Photography Logo" class="brand-logo" id="brandLogo">
+          <div class="focus-brackets">
+            <span class="fb-tl"></span>
+            <span class="fb-tr"></span>
+            <span class="fb-bl"></span>
+            <span class="fb-br"></span>
+          </div>
+        </div>
+
+        <div class="brand-identity">
+          <h1 class="brand-title">BLINK FRAME</h1>
+          <p class="brand-subtitle">PHOTOGRAPHY & FILMS</p>
+        </div>
+      </section>
+
+      <!-- MAINTENANCE NOTICE -->
+      <section class="notice-card">
+        <div class="status-chip">
+          <span class="status-pulse"></span>
+          <span>SITE UNDER MAINTENANCE</span>
+        </div>
+        <h2 class="notice-headline">Capturing Magic Behind The Lens</h2>
+        <p class="notice-subtext">
+          We are currently upgrading our website to bring you an extraordinary digital experience. Our new website will go live in:
+        </p>
+
+        <!-- 7-DAY DIGITAL COUNTDOWN -->
+        <div class="countdown-container" id="countdown">
+          
+          <!-- DAYS -->
+          <div class="countdown-card">
+            <div class="digital-box">
+              <span class="digital-number" id="days">07</span>
+              <div class="split-line"></div>
+              <div class="digital-glow"></div>
+            </div>
+            <span class="countdown-label">DAYS</span>
+          </div>
+
+          <div class="countdown-colon">:</div>
+
+          <!-- HOURS -->
+          <div class="countdown-card">
+            <div class="digital-box">
+              <span class="digital-number" id="hours">00</span>
+              <div class="split-line"></div>
+              <div class="digital-glow"></div>
+            </div>
+            <span class="countdown-label">HOURS</span>
+          </div>
+
+          <div class="countdown-colon">:</div>
+
+          <!-- MINUTES -->
+          <div class="countdown-card">
+            <div class="digital-box">
+              <span class="digital-number" id="minutes">00</span>
+              <div class="split-line"></div>
+              <div class="digital-glow"></div>
+            </div>
+            <span class="countdown-label">MINUTES</span>
+          </div>
+
+          <div class="countdown-colon">:</div>
+
+          <!-- SECONDS -->
+          <div class="countdown-card">
+            <div class="digital-box highlight">
+              <span class="digital-number" id="seconds">00</span>
+              <div class="split-line"></div>
+              <div class="digital-glow"></div>
+            </div>
+            <span class="countdown-label">SECONDS</span>
+          </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="launch-progress-wrapper">
+          <div class="progress-info">
+            <span>Website Launch Preparation</span>
+            <span id="progressPercent">87%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar" style="width: 87%;">
+              <span class="progress-glow"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ONLY WHATSAPP CONTACT SECTION -->
+        <div class="contact-whatsapp-block">
+          <p class="contact-lead-text">For Bookings & Inquiries, Contact Us Directly on WhatsApp:</p>
+          <a href="https://wa.me/917001870391?text=Hi%20Blink%20Frame%20Photography%2C%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20photography%20and%20films." 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-whatsapp-pure">
+            <span class="wa-icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <div class="wa-text-group">
+              <span class="wa-sub">FOR BOOKINGS (WHATSAPP)</span>
+              <span class="wa-number">70018 70391</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square wa-arrow"></i>
+          </a>
+        </div>
+
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="page-footer">
+        <div class="footer-details">
+          <p class="copyright-text">
+            Copyright Reserved by Blink Frame Photography
+          </p>
+          <p class="developer-credit">
+            Develop by <a href="https://ddlg.in" target="_blank" rel="noopener noreferrer" class="developer-link">DDL Group</a>
+          </p>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- FLOATING QUICK WHATSAPP BUTTON -->
+  <aside class="floating-whatsapp-container">
+    <a href="https://wa.me/917001870391?text=Hi%20Blink%20Frame%20Photography%2C%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20photography%20and%20films." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="floating-whatsapp-btn"
+       aria-label="Chat on WhatsApp 70018 70391">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="floating-tooltip">WhatsApp: 70018 70391</span>
+    </a>
+  </aside>
+
+  <!-- Interactive Snapshot Flash Effect Element -->
+  <div id="interactiveFlash" class="interactive-flash"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
