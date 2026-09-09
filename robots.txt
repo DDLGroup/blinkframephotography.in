@@ -1,0 +1,52 @@
+# Robots.txt for Blink Frame Photography (https://blinkframephotography.in)
+# Designed for maximum SEO visibility and AI search crawler indexing
+
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /assets/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Googlebot & Image Search
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /
+
+# Bing & Yahoo
+User-agent: Bingbot
+Allow: /
+
+# Apple Search & Siri Suggestions
+User-agent: Applebot
+Allow: /
+
+# AI Crawlers & Conversational Search (OpenAI, Google Gemini, Anthropic, Perplexity)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap Location
+Sitemap: https://blinkframephotography.in/sitemap.xml
+
+# Host declaration
+Host: https://blinkframephotography.in

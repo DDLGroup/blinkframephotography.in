@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- 1. Home Page -->
+  <url>
+    <loc>https://blinkframephotography.in/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/prewedding/prewedding_01.webp</image:loc>
+      <image:title>Blink Frame Photography - Premium Wedding &amp; Pre-Wedding Photography</image:title>
+      <image:caption>Award-winning cinematic pre-wedding photoshoot in Kolkata by Blink Frame Photography</image:caption>
+      <image:geo_location>Kolkata, West Bengal, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/riceceremony/rice_ceremony_01.webp</image:loc>
+      <image:title>Traditional Bengali Rice Ceremony (Annaprashan) Photography</image:title>
+      <image:caption>Candid rituals and sacred celebrations captured by Blink Frame Photography</image:caption>
+      <image:geo_location>Kolkata, West Bengal, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 2. Services Page -->
+  <url>
+    <loc>https://blinkframephotography.in/services.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/prewedding/prewedding_03.webp</image:loc>
+      <image:title>Pre-Wedding Photoshoot Packages Kolkata</image:title>
+      <image:caption>Outdoor drone and cinematic pre-wedding photography by Blink Frame</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/riceceremony/rice_ceremony_03.webp</image:loc>
+      <image:title>Annaprashan Ceremony Photoshoot Kolkata</image:title>
+      <image:caption>Baby rice ceremony rituals, family portraits and candid photography</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 3. Portfolio Gallery Page -->
+  <url>
+    <loc>https://blinkframephotography.in/gallery.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/prewedding/prewedding_02.webp</image:loc>
+      <image:title>Romantic Sunset Couple Photoshoot Kolkata</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/prewedding/prewedding_04.webp</image:loc>
+      <image:title>Royal Heritage Pre-Wedding Photography Bengal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/prewedding/prewedding_05.webp</image:loc>
+      <image:title>Candid Pre-Wedding Moments Blink Frame</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/riceceremony/rice_ceremony_02.webp</image:loc>
+      <image:title>Baby Annaprashan Ceremony Candid Portrait</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/riceceremony/rice_ceremony_04.webp</image:loc>
+      <image:title>Grandparents Blessing Rice Ceremony Ritual</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/images/riceceremony/rice_ceremony_05.webp</image:loc>
+      <image:title>Traditional Bengali Annaprashan Thali and Ritual</image:title>
+    </image:image>
+  </url>
+
+  <!-- 4. About Us Page -->
+  <url>
+    <loc>https://blinkframephotography.in/about.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blinkframephotography.in/logo.webp</image:loc>
+      <image:title>Blink Frame Photography Studio Brand Mark</image:title>
+    </image:image>
+  </url>
+
+  <!-- 5. Contact & Bookings Page -->
+  <url>
+    <loc>https://blinkframephotography.in/contact.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
