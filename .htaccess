@@ -1,0 +1,91 @@
+# ==============================================================================
+# Blink Frame Photography — Apache & LiteSpeed Security and SEO Configuration
+# ==============================================================================
+
+# 1. Force HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 2. Disable Directory Browsing (Prevents hackers from viewing directory listings)
+Options -Indexes
+
+# 3. Block Access to Hidden & Sensitive Files (.git, .env, backups, configs)
+<FilesMatch "^\.(.*)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Protect system and script files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# 4. Industry-Standard HTTP Security Headers
+<IfModule mod_headers.c>
+  # Enforce HTTPS strictly for 1 year including subdomains
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Prevent MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Protect against clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # XSS filter protection
+  Header always set X-XSS-Protection "1; mode=block"
+  
+  # Control referrer leakage
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Hardware permission lockdown
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  
+  # Content Security Policy (Allow Google Fonts & self assets)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'self';"
+</IfModule>
+
+# 5. GZIP Compression for Fast Page Loads (Crucial for Core Web Vitals)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 6. Browser Caching for Instant Repeat Loads
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  
+  # Images: 1 Year (WebP, PNG, JPG, SVG)
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # CSS & JS: 1 Year (hashed by Vite)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  
+  # Fonts: 1 Year
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  
+  # HTML: Always check for updates
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

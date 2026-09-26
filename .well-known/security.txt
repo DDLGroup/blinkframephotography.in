@@ -1,0 +1,8 @@
+# Blink Frame Photography Security Contact (RFC 9116)
+Contact: mailto:blinkframephotography@gmail.com
+Contact: tel:+917001870391
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, bn, hi
+Canonical: https://blinkframephotography.in/.well-known/security.txt
+Policy: https://blinkframephotography.in/contact.html
+Acknowledgments: https://blinkframephotography.in/about.html
